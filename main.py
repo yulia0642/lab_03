@@ -11,7 +11,7 @@ def main() -> None:
             category="Роман",
             year=1866,
             author="Фёдор Достоевский",
-            isbn="ISBN-13: 978-5-17-090738-2",
+            isbn="978-5-17-090738-2",
         ),
         Book(
             book_id="B002",
@@ -34,27 +34,27 @@ def main() -> None:
     for book in books:
         catalog.add(book)
 
-    print("Все книги каталога:")
+    print("All books in the catalog:")
     for book in catalog:
         print(book)
 
-    print("\nПоиск книги по ID B002:")
+    print("\nBook with ID B002:")
     print(catalog.get("B002"))
 
-    print("\nКниги категории «Роман»:")
+    print("\nBooks in the 'Novel' category:")
     for book in catalog.find_by_category("Роман"):
         print(book.title)
 
-    print("\nПоиск по названию «война»:")
+    print("\nSearch results for 'war':")
     for book in catalog.find_by_name("война"):
         print(book.title)
 
     catalog.save("books.json")
-    print("\nКаталог сохранён в books.json")
+    print("\nCatalog saved to books.json")
 
     restored_catalog = Catalog()
     restored_catalog.load("books.json")
-    print(f"Загружено книг: {len(restored_catalog)}")
+    print(f"Number of books loaded: {len(restored_catalog)}")
 
 
 if __name__ == "__main__":
